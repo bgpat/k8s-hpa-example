@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-proxy
+data:
+  nginx.conf: |
+    server {
+      listen 80;
+      server_name localhost;
+      location / {
+        proxy_pass http://127.0.0.1:8080;
+      }
+    }
+    server {
+      listen 8081;
+      server_name status;
+      location / {
+        stub_status;
+      }
+    }

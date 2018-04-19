@@ -1,0 +1,16 @@
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: helloworld
+spec:
+  maxReplicas: 50
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1beta1
+    kind: Deployment
+    name: helloworld
+  metrics:
+  - type: Pods
+    pods:
+      metricName: nginx_connections_current{state="waiting"}
+      targetAverageValue: 10
