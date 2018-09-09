@@ -15,5 +15,5 @@ spec:
       target:
         kind: Service
         name: custom-metrics
-      metricName: nginx_connections_current{state="waiting"}
+      metricName: nginx_connections_current{state="writing"}
       targetValue: 5
